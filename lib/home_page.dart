@@ -3,8 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:test_provider_pattern/counter.dart';
 
 class MyHomePage extends StatelessWidget {
-  final int _counter = 0;
-
   final String title;
 
   MyHomePage({this.title});
@@ -17,6 +15,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // listen: true (by default) because we need to listen for any update into the counter value
+    int _counter = Provider.of<Counter>(context).getCounter;
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
