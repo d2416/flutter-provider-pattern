@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test_provider_pattern/counter.dart';
 
 class MyHomePage extends StatelessWidget {
   final int _counter = 0;
@@ -7,7 +9,11 @@ class MyHomePage extends StatelessWidget {
 
   MyHomePage({this.title});
 
-  void _incrementCounter() {}
+  void _incrementCounter(BuildContext context) {
+    // listen: fale because we don't need to listen just performing an action
+    Provider.of<Counter>(context, listen: false)
+        .incrementCounter(); // Flutter will look for the provider of type Counter and use the method incrementCounter inside
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,9 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          _incrementCounter(context);
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
