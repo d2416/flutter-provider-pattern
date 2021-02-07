@@ -7,11 +7,12 @@ The project is based on the article: "How to Use the Provider Pattern in Flutter
 
 ## Steps to implement Provider Pattern
 
-1- Create Notifier
-    - class X extends ChangeNotifier
-    - use notifyListeners()
+1- Create Notifier class
 
-2- Declare Provider
+- class X extends ChangeNotifier
+- use notifyListeners()
+
+2- Declare Provider wrapping MaterialApp widget with MultiProvider
 
 ````dart
     MultiProvider(
@@ -22,17 +23,19 @@ The project is based on the article: "How to Use the Provider Pattern in Flutter
       ],
 ````
 
-3- Perform an action using the specific Provider type (Counter in this case).
+3- Convert MyHomeApp widget in Statelesswidget and remove setState()
 
-=> listen: false because don't need for listening but only perform an action
+4- Perform an action using the specific Provider type (Counter in this case).
+
+** listen: false because don't need for listening but only perform an action
 
 ````dart
     Provider.of<Counter>(context, listen: false).incrementCounter();
 ````
 
-4- Listen for updates using our provider of type Counter
+5- Listen for updates using our provider of type Counter
 
-=> listen: true (by default). We need to get/listen for updates
+** listen: true (by default). We need to get/listen for updates
 
 ````dart
     int _counter = Provider.of<Counter>(context).getCounter;
