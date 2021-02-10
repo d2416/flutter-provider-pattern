@@ -25,7 +25,7 @@ The project is based on the article: "How to Use the Provider Pattern in Flutter
 
 3- Convert MyHomeApp widget in Statelesswidget and remove setState()
 
-4- Perform an action using the specific Provider type (Counter in this case).
+4- Inside the onPressed function, we perform an action using the specific Provider type (Counter in this case).
 
 ** listen: false because don't need for listening but only perform an action
 
@@ -33,7 +33,7 @@ The project is based on the article: "How to Use the Provider Pattern in Flutter
     Provider.of<Counter>(context, listen: false).incrementCounter();
 ````
 
-5- Listen for updates using our provider of type Counter
+5- Inside the build method, we listen for updates using our provider of type Counter
 
 ** listen: true (by default). We need to get/listen for updates
 
